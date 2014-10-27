@@ -31,10 +31,10 @@ public class Pessoa implements Serializable {
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 
-	@OneToOne(mappedBy = "Pessoa")
+	@OneToOne(mappedBy = "pessoa")
 	private Endereco endereco;
 
-	@OneToMany(mappedBy = "Pessoa")
+	@OneToMany(mappedBy = "pessoa")
 	private List<Telefone> telefone;
 
 	public Long getId() {

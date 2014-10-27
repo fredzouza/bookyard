@@ -25,10 +25,8 @@ create table endereco(
 	numero varchar(10),
 	complemento varchar(150),
 	id_pessoa int,
-	id_uf int,
 	id_municipio int,
 	foreign key (id_pessoa) references pessoa(id),
-	foreign key (id_uf) references uf(id),
 	foreign key (id_municipio) references municipio(id)
 );
 

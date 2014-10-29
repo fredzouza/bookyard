@@ -17,7 +17,16 @@ public class Teste {
 		Teste teste = new Teste();
 //		teste.addTelefone();
 //		teste.addMunicipio();
-		teste.addEndereco();
+//		teste.addEndereco();
+		
+		String a = "fred";
+		
+		for (int i = a.length(); i > 0; i--) {
+//			System.out.println("Par 1 = " + (i-1));
+//			System.out.println("Par 2 = " + i);
+			
+			System.out.println(a.substring( (i-1) , i));
+		}
 	}
 
 	public void addTelefone(){

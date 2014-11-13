@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+<link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+<script src="../resources/js/bootstrap.min.js"></script>
+</h:head> 
+
+<body> 
+
+<ui:composition>
+	<div style="border-bottom: 3px solid gray; height: 68px">
+	
+<div class="navbar navbar-default" style=" position: fixed;  right: 0; left: 0;  z-index: 1030;" id="divP" >
+
+	<div class="navbar-collapse collapse navbar-responsive-collapse">
+
+		<ul class="nav navbar-nav">
+
+			<li style="padding-top: 5px" >
+				<img width="54px" height="50px" alt="Error" src="../images/Logo3_Fotosensores_Tecnologias.jpg" />
+			</li>			
+			
+			<!-- Menu cadastros -->
+			<li class="dropdown"><a aria-expanded="false" href="#"
+				class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+
+					<li class="dropdown-submenu">
+						<a tabindex="-1" href="#">Usuario</a>
+						<ul class="dropdown-menu">
+							<li><a tabindex="-1" href="${url}/usuario/cadastrar">Novo</a></li>
+							<li><a href="${url}/usuario/listar">Listar</a></li>
+						</ul>
+					</li>
+	              			
+					<li class="dropdown-submenu">
+						<a tabindex="-1" href="#">Grupo</a>
+						<ul class="dropdown-menu">
+							<li><a tabindex="-1" href="${url}/usuarioGrupo/cadastrar">Novo</a></li>
+							<li><a href="${url}/usuarioGrupo/listar">Listar</a></li>
+						</ul>
+					</li>
+	              			
+					<li class="dropdown-submenu">
+						<a tabindex="-1" href="#">Camera</a>
+						<ul class="dropdown-menu">
+							<li><a tabindex="-1" href="${url}/camera/cadastrar">Novo</a></li>
+							<li><a href="${url}/camera/listar">Listar</a></li>
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+			<!-- Fim Menu cadastros -->
+
+			<!-- Menu ocorrencias -->
+			<li><a href="#">Ocorrências</a></li>
+			<!-- Fim Menu ocorrencias -->
+
+			<li class="dropdown"><a aria-expanded="false" href="#"
+				class="dropdown-toggle" data-toggle="dropdown">Relatorios <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li class="divider"></li>
+					<li class="dropdown-header">Dropdown header</li>
+					<li><a href="#">Separated link</a></li>
+					<li><a href="#">One more separated link</a></li>
+				</ul></li>
+		</ul>
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li><a href="#">Ocorrências</a></li>
+
+	    <li class="dropdown-submenu">
+		    <a tabindex="-1" href="#">More options</a>
+		    <ul class="dropdown-menu">
+				<li><a href="#">Ocorrências</a></li>
+				<li><a href="#">Ocorrências</a></li>
+		    </ul>
+	    </li>
+    </ul>
+    
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<a href="${pageContext.request.contextPath}/logout">Sair</a>
+			</li>
+			
+			<li>
+				<img src="../resources/img/header-top-right.jpg" style="width: 55px; height: 55px" align="right" />
+			</li>
+		</ul>
+	</div>
+</div>
+	
+	</div>
+</ui:composition>
+
+</body> 
+</html>

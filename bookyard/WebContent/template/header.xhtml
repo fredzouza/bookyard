@@ -5,14 +5,14 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
 <h:head>
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
-<script src="../resources/js/bootstrap.min.js"></script>
 </h:head> 
 
-<body> 
+<h:body> 
+
+<h:outputStylesheet name="/css/bootstrap.min.css" />
+<h:outputScript name="/js/bootstrap.min.js" />
 
 <ui:composition>
-	<div style="border-bottom: 3px solid gray; height: 68px">
 	
 <div class="navbar navbar-default" style=" position: fixed;  right: 0; left: 0;  z-index: 1030;" id="divP" >
 
@@ -20,10 +20,6 @@
 
 		<ul class="nav navbar-nav">
 
-			<li style="padding-top: 5px" >
-				<img width="54px" height="50px" alt="Error" src="../images/Logo3_Fotosensores_Tecnologias.jpg" />
-			</li>			
-			
 			<!-- Menu cadastros -->
 			<li class="dropdown"><a aria-expanded="false" href="#"
 				class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
@@ -92,14 +88,14 @@
 			</li>
 			
 			<li>
-				<img src="../resources/img/header-top-right.jpg" style="width: 55px; height: 55px" align="right" />
+				<h:graphicImage library="images" name="header-top-right.jpg"
+					style="width: 55px; height: 55px" align="right" />
 			</li>
 		</ul>
 	</div>
 </div>
 	
-	</div>
 </ui:composition>
 
-</body> 
+</h:body> 
 </html>

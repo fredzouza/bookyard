@@ -6,28 +6,8 @@
 
 <h:head></h:head> 
 <body> 
-
-<div id="page">
-
-	<div>
-		<ui:insert name="header">
-			<ui:include src="/template/header.xhtml" />
-		</ui:insert>
-	</div>
-
-	<div>
-		<ui:insert name="content">
-			<ui:include src="/template/content.xhtml" />
-		</ui:insert>
-	</div>
-
-	<div>
-		<ui:insert name="footer">
-			<ui:include src="/template/footer.xhtml" />
-		</ui:insert>
-	</div>
-
-</div>
-
+<ui:composition> 
+   <h1>Default Footer</h1>	
+</ui:composition>
 </body> 
 </html>

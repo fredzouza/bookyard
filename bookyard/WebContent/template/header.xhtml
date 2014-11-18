@@ -2,98 +2,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
 <h:head>
+
+	<style type="text/css">
+	</style>
+
 </h:head> 
 
 <h:body> 
 
-<h:outputStylesheet name="/css/bootstrap.min.css" />
-<h:outputScript name="/js/bootstrap.min.js" />
-
 <ui:composition>
-	
-<div class="navbar navbar-default" style=" position: fixed;  right: 0; left: 0;  z-index: 1030;" id="divP" >
 
-	<div class="navbar-collapse collapse navbar-responsive-collapse">
+<h:form>
+	<p:growl id="messages" />
 
-		<ul class="nav navbar-nav">
-
-			<!-- Menu cadastros -->
-			<li class="dropdown"><a aria-expanded="false" href="#"
-				class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-
-					<li class="dropdown-submenu">
-						<a tabindex="-1" href="#">Usuario</a>
-						<ul class="dropdown-menu">
-							<li><a tabindex="-1" href="${url}/usuario/cadastrar">Novo</a></li>
-							<li><a href="${url}/usuario/listar">Listar</a></li>
-						</ul>
-					</li>
-	              			
-					<li class="dropdown-submenu">
-						<a tabindex="-1" href="#">Grupo</a>
-						<ul class="dropdown-menu">
-							<li><a tabindex="-1" href="${url}/usuarioGrupo/cadastrar">Novo</a></li>
-							<li><a href="${url}/usuarioGrupo/listar">Listar</a></li>
-						</ul>
-					</li>
-	              			
-					<li class="dropdown-submenu">
-						<a tabindex="-1" href="#">Camera</a>
-						<ul class="dropdown-menu">
-							<li><a tabindex="-1" href="${url}/camera/cadastrar">Novo</a></li>
-							<li><a href="${url}/camera/listar">Listar</a></li>
-						</ul>
-					</li>
-
-				</ul>
-			</li>
-			<!-- Fim Menu cadastros -->
-
-			<!-- Menu ocorrencias -->
-			<li><a href="#">Ocorrências</a></li>
-			<!-- Fim Menu ocorrencias -->
-
-			<li class="dropdown"><a aria-expanded="false" href="#"
-				class="dropdown-toggle" data-toggle="dropdown">Relatorios <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li class="divider"></li>
-					<li class="dropdown-header">Dropdown header</li>
-					<li><a href="#">Separated link</a></li>
-					<li><a href="#">One more separated link</a></li>
-				</ul></li>
-		</ul>
-
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-		<li><a href="#">Ocorrências</a></li>
-
-	    <li class="dropdown-submenu">
-		    <a tabindex="-1" href="#">More options</a>
-		    <ul class="dropdown-menu">
-				<li><a href="#">Ocorrências</a></li>
-				<li><a href="#">Ocorrências</a></li>
-		    </ul>
-	    </li>
-    </ul>
-    
-		<ul class="nav navbar-nav navbar-right">
-			<li>
-				<a href="${pageContext.request.contextPath}/logout">Sair</a>
-			</li>
-			
-			<li>
-				<h:graphicImage library="images" name="header-top-right.jpg"
-					style="width: 55px; height: 55px" align="right" />
-			</li>
-		</ul>
-	</div>
-</div>
+	<p:menubar id="menubar" style="background-color: green" >
+		<p:submenu label="Cadastros" >
+			<p:submenu label="Livros" >
+				<p:menuitem value="Novo" url="#" />
+				<p:menuitem value="Listar" url="#" />
+			</p:submenu>
+		</p:submenu>
+		
+		<f:facet name="options">
+			<p:commandButton type="buttom" value="Sair" action="#" />
+		</f:facet>
+	</p:menubar>
+</h:form>
 	
 </ui:composition>
 

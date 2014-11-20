@@ -14,6 +14,7 @@ public class Uf {
 	@Id
 	private Long id;
 	private String descricao;
+	private String sigla;
 	
 	@OneToMany(mappedBy = "uf")
 	List<Municipio> municipios;
@@ -32,6 +33,22 @@ public class Uf {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
+	}
+
+	public List<Municipio> getMunicipios() {
+		return municipios;
+	}
+
+	public void setMunicipios(List<Municipio> municipios) {
+		this.municipios = municipios;
 	}
 
 }

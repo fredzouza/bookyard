@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="content">
+	
+		<p:tabView>
+			<p:tab title="Municipio">
+				<h:form id="formCadastro">
+					<p:growl/>
+				
+					<p:panelGrid columns="2">
+						<h:outputLabel value="" />
+						<h:inputHidden value="#{municipioBean.municipio.id}" />
+						
+						<h:outputLabel value="Descrição" />
+						<p:inputText value="#{municipioBean.municipio.descricao}"
+							onkeyup="this.value = this.value.toUpperCase()"
+							required="true" requiredMessage="Campo descrição obrigatória!" />
+						
+						<h:outputLabel value="Codigo IBGE" />
+						<p:inputText value="#{municipioBean.municipio.codigoIbge}" />
+						
+						<h:outputLabel value="UF" />
+						<p:selectOneMenu value="#{municipioBean.uf.id}">
+							<f:selectItem itemLabel="Uf" itemValue="" />
+							<f:selectItems var="itens" value="#{ufBean.lista()}"
+								itemLabel="#{itens.descricao}" itemValue="#{itens.id}" />
+						</p:selectOneMenu>
+					
+						<p:commandButton value="Salvar" action="#{municipioBean.salvar()}"
+							update="@form" />	
+					</p:panelGrid>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+	
+	</ui:define>
+</ui:composition>
+
+</html>

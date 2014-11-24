@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="content">
+	
+		<p:tabView id="tbvCidade">
+			<p:tab title="UF">
+				<h:form id="form" >
+					<p:growl id="msgs"/>
+		
+					<p:panelGrid columns="2">
+		
+						<h:outputLabel value="" />
+						<h:inputHidden value="#{ufBean.uf.id}" />
+						
+						<h:outputLabel value="Descrição" />
+						<p:inputText value="#{ufBean.uf.descricao}"
+							onkeyup="this.value = this.value.toUpperCase()"
+							required="true" requiredMessage="Descrição obrigatória"/>
+		
+						<h:outputLabel value="Sigla" />
+						<p:inputText value="#{ufBean.uf.sigla}"
+							onkeyup="this.value = this.value.toUpperCase()"
+							required="true" requiredMessage="Sigla obrigatória"/>
+							
+						<p:commandButton value="Salvar" action="#{ufBean.salvar()}"
+							update="@form :formLista" />
+
+						<p:commandButton value="Cancelar" actionListener="#{ufBean.limpa()}"
+							update="@form" />
+					</p:panelGrid>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+		
+		<h:form id="formLista">
+			<p:growl/>
+			
+			<p:dataTable var="itens" value="#{ufBean.lista()}" >
+				<f:facet name="header">
+					<h:outputLabel value="Lista de UF" />
+				</f:facet>
+				
+				<p:column headerText="Id" >
+					<h:outputLabel value="#{itens.id}" />
+				</p:column>
+
+				<p:column headerText="Descrição" >
+					<h:outputLabel value="#{itens.descricao}" />
+				</p:column>
+
+				<p:column headerText="Sigla" >
+					<h:outputLabel value="#{itens.sigla}" />
+				</p:column>
+
+				<p:column headerText="Opções" >
+					<p:commandButton value="Editar" update=":tbvCidade:form">
+						<f:setPropertyActionListener target="#{ufBean.uf}" value="#{itens}" />
+					</p:commandButton>
+
+					<p:commandButton value="Excluir" action="#{ufBean.deletar()}"
+						update="@form">
+						<f:setPropertyActionListener target="#{ufBean.uf}" value="#{itens}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

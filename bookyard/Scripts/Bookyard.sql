@@ -10,13 +10,16 @@ create table pessoa(
 
 create table uf(
 	id int auto_increment primary key,
-	descricao varchar(50) not null
+	descricao varchar(50) not null,
+	sigla varchar(2) not null
 );
 
 create table municipio(
 	id int auto_increment primary key,
 	descricao varchar(50) not null,
-	codigo_ibge int
+	id_uf int,
+	codigo_ibge int,
+	foreign key (id_uf) references uf(id)
 );
 
 create table endereco(

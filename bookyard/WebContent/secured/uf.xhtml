@@ -32,7 +32,7 @@
 							update="@form :formLista" />
 
 						<p:commandButton value="Cancelar" actionListener="#{ufBean.limpa()}"
-							update="@form" />
+							update="@form" immediate="true" />
 					</p:panelGrid>
 				</h:form>
 			</p:tab>

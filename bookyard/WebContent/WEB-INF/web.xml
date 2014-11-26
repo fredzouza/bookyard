@@ -25,4 +25,9 @@
 		<param-value>cupertino</param-value>
 	</context-param>
 
+	<!-- Paginas de erro -->
+    <error-page>
+		<error-code>404</error-code>
+		<location>/error/errorPage404.xhtml</location>
+	</error-page>
 </web-app>

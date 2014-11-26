@@ -5,17 +5,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-<h:head>
-</h:head> 
-
-<body> 
-<ui:composition>
-	<div id="footer" style="position: absolute;
-		bottom: 0px; left: 0px; right: 0px;
-		padding: 5px; text-align: center;" >
-		
-		<p:panel header="Default Footer" />
-	</div>
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="content">
+	
+		<div style="text-align: center;">
+			<h1>Pagina não encontrada!</h1>
+			<img src="./resources/images/naoEncontrado.jpg" />
+		</div>
+			
+	</ui:define>
 </ui:composition>
-</body> 
 </html>

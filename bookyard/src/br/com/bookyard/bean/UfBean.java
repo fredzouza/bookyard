@@ -17,28 +17,15 @@ public class UfBean {
 	private Uf uf = new Uf();
 	UfService dao = new UfService();
 
-	public Uf getUf() {
-		return uf;
-	}
-
-	public void setUf(Uf uf) {
-		this.uf = uf;
-	}
-	
-	public void limpa(){
-		uf = new Uf();
-	}
-	
 	public void salvar(){
 		String mensagem = null;
 		
 		if (uf.getId() == 0) {
-			uf.setId(null);
 			dao.createUf(uf);
-			mensagem = "Uf inserida com sucesso!";
+			mensagem = "Registro inserido com sucesso!";
 		} else {
 			dao.updateUf(uf);
-			mensagem = "Uf alterada com sucesso!";
+			mensagem = "Registro alterado com sucesso!";
 		}
 		limpa();
 		
@@ -54,6 +41,19 @@ public class UfBean {
 		dao.deleteUf(uf);
 		limpa();
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Uf excluida com sucesso!", ""));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro excluido com sucesso!", ""));
 	}
+
+	public void limpa(){
+		uf = new Uf();
+	}
+	
+	public Uf getUf() {
+		return uf;
+	}
+
+	public void setUf(Uf uf) {
+		this.uf = uf;
+	}
+	
 }

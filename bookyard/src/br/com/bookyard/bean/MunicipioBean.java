@@ -1,14 +1,18 @@
 package br.com.bookyard.bean;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
+
 import br.com.bookyard.model.Municipio;
-import br.com.bookyard.model.Uf;
+import br.com.bookyard.service.FiltroLazyEntities;
 import br.com.bookyard.service.MunicipioService;
 import br.com.bookyard.service.UfService;
 
@@ -16,13 +20,30 @@ import br.com.bookyard.service.UfService;
 @RequestScoped
 public class MunicipioBean {
 
+	private LazyDataModel<Municipio> lazyMunicipio;
+	private FiltroLazyEntities filtro = new FiltroLazyEntities();
 	private Municipio municipio = new Municipio();
 	private MunicipioService dao = new MunicipioService();
-	private Uf uf = new Uf();
 	
-	public void limpar(){
-		municipio = new Municipio();
-		uf = new Uf();
+	public MunicipioBean(){
+		lazyMunicipio = new LazyDataModel<Municipio>() {
+
+			private static final long serialVersionUID = 1L;
+			
+			@Override
+			public List<Municipio> load(int first, int pageSize,
+					String sortField, SortOrder sortOrder,
+					Map<String, String> filters) {
+
+				filtro.setPrimeiroRegistro(first);
+				filtro.setQuantidadeRegistros(pageSize);
+				filtro.setAscendente(SortOrder.ASCENDING.equals(sortOrder));
+				filtro.setOrdenacao(sortField);
+				
+				setRowCount(dao.findEntitiesLzyTotal(municipio).intValue());
+				return dao.findEntitiesLazy(filtro, municipio);
+			}
+		};
 	}
 	
 	public void salvar(){
@@ -31,7 +52,7 @@ public class MunicipioBean {
 
 		if (municipio.getId() == 0) {
 			municipio.setId(null);
-			municipio.setUf(ufService.findById(uf));
+			municipio.setUf(ufService.findById(municipio.getUf()));
 			
 			dao.createMunicipio(municipio);
 			
@@ -57,6 +78,10 @@ public class MunicipioBean {
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Municipio excluido com sucesso!", ""));
 	}
 
+	public void limpar(){
+		municipio = new Municipio();
+	}
+	
 	public Municipio getMunicipio() {
 		return municipio;
 	}
@@ -65,12 +90,20 @@ public class MunicipioBean {
 		this.municipio = municipio;
 	}
 
-	public Uf getUf() {
-		return uf;
+	public FiltroLazyEntities getFiltro() {
+		return filtro;
 	}
 
-	public void setUf(Uf uf) {
-		this.uf = uf;
+	public void setFiltro(FiltroLazyEntities filtro) {
+		this.filtro = filtro;
+	}
+
+	public LazyDataModel<Municipio> getLazyMunicipio() {
+		return lazyMunicipio;
+	}
+
+	public void setLazyMunicipio(LazyDataModel<Municipio> lazyMunicipio) {
+		this.lazyMunicipio = lazyMunicipio;
 	}
 
 }

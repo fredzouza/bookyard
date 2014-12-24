@@ -26,7 +26,8 @@
 						<h:outputLabel value="Sigla" />
 						<p:inputText value="#{ufBean.uf.sigla}"
 							onkeyup="this.value = this.value.toUpperCase()"
-							required="true" requiredMessage="Sigla obrigatória"/>
+							required="true" requiredMessage="Sigla obrigatória"
+							maxlength="2"/>
 							
 						<p:commandButton value="Salvar" action="#{ufBean.salvar()}"
 							update="@form :formLista" />

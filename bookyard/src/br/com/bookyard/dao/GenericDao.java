@@ -7,6 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceUnitUtil;
 import javax.persistence.Query;
 
+import br.com.bookyard.service.FiltroLazyEntities;
 import br.com.bookyard.util.ConnectionFactory;
 
 public class GenericDao {
@@ -18,13 +19,6 @@ public class GenericDao {
 		tx.begin();
 		entityManager.persist(object);
 		tx.commit();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public <E> List<E> readAll(E object){
-		String consulta = "from " + object.getClass().getName();
-		Query query = entityManager.createQuery(consulta);
-		return query.getResultList();
 	}
 	
 	public <E> void update(E object){
@@ -50,4 +44,27 @@ public class GenericDao {
 			return (E) entityManager.find(objeto.getClass(), idPrimaryKey);
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public <E> List<E> findEntities(E object){
+		String consulta = "from " + object.getClass().getName();
+		Query query = entityManager.createQuery(consulta);
+		return query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <E> List<E> findEntitiesLazy(FiltroLazyEntities filtro, E entity){
+		String consulta = "from " + entity.getClass().getName();
+		Query query = entityManager.createQuery(consulta);
+		query.setFirstResult(filtro.getPrimeiroRegistro());
+		query.setMaxResults(filtro.getQuantidadeRegistros());
+		return query.getResultList();
+	}
+	
+	public <E> Long findEntitiesLzyTotal(E entity) {
+		String consulta = "select count(*) from " + entity.getClass().getName();
+		Query query = entityManager.createQuery(consulta);
+		return (Long) query.getSingleResult();
+	}
+	
 }

@@ -14,7 +14,7 @@ public class MunicipioService {
 	}
 	
 	public List<Municipio> findAllMunicipio(Municipio municipio){
-		return municipioDao.readAll(municipio);
+		return municipioDao.findEntities(municipio);
 	}
 	
 	public void updateMunicipio(Municipio municipio){
@@ -28,4 +28,13 @@ public class MunicipioService {
 	public Municipio findById(Municipio municipio){
 		return municipioDao.findById(municipio);
 	}
+
+	public List<Municipio> findEntitiesLazy(FiltroLazyEntities filtro, Municipio entity){
+		return municipioDao.findEntitiesLazy(filtro, entity);
+	}
+	
+	public Long findEntitiesLzyTotal(Municipio entity) {
+		return municipioDao.findEntitiesLzyTotal(entity);
+	}
+	
 }

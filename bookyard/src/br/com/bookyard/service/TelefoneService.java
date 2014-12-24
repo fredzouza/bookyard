@@ -14,7 +14,7 @@ public class TelefoneService {
 	}
 	
 	public List<Telefone> findAllTelefone(Telefone telefone){
-		return telefoneDao.readAll(telefone);
+		return telefoneDao.findEntities(telefone);
 	}
 	
 	public void updateTelefone(Telefone telefone){

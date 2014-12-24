@@ -8,14 +8,14 @@
 <ui:composition template="/template/layout.xhtml">
 	<ui:define name="content">
 	
-		<p:tabView>
+		<p:tabView id="tbvCadastro">
 			<p:tab title="Municipio">
 				<h:form id="formCadastro">
 					<p:growl/>
 				
+					<h:inputHidden value="#{municipioBean.municipio.id}" />
+
 					<p:panelGrid columns="2">
-						<h:outputLabel value="" />
-						<h:inputHidden value="#{municipioBean.municipio.id}" />
 						
 						<h:outputLabel value="Descrição" />
 						<p:inputText value="#{municipioBean.municipio.descricao}"
@@ -26,18 +26,53 @@
 						<p:inputText value="#{municipioBean.municipio.codigoIbge}" />
 						
 						<h:outputLabel value="UF" />
-						<p:selectOneMenu value="#{municipioBean.uf.id}">
+						<p:selectOneMenu value="#{municipioBean.municipio.uf.id}"
+							required="true" requiredMessage="Campo UF obrigatótiro.">
 							<f:selectItem itemLabel="Uf" itemValue="" />
 							<f:selectItems var="itens" value="#{ufBean.lista()}"
 								itemLabel="#{itens.descricao}" itemValue="#{itens.id}" />
 						</p:selectOneMenu>
 					
-						<p:commandButton value="Salvar" action="#{municipioBean.salvar()}"
-							update="@form" />	
 					</p:panelGrid>
+					
+					<p:commandButton value="Salvar" action="#{municipioBean.salvar()}"
+						update="@form :formLista" />	
 				</h:form>
 			</p:tab>
 		</p:tabView>
+		
+		<h:form id="formLista">
+			<p:dataTable var="itens" value="#{municipioBean.lazyMunicipio}" paginator="true"
+				rows="10" rowsPerPageTemplate="5, 10, 20" lazy="true">
+				
+				<p:column headerText="Id">
+					<h:outputLabel value="#{itens.id}" />
+				</p:column>
+				
+				<p:column headerText="Descrição" sortBy="#{itens.descricao}">
+					<h:outputLabel value="#{itens.descricao}" />
+				</p:column>
+				
+				<p:column headerText="Codigo IBGE">
+					<h:outputLabel value="#{itens.codigoIbge}" />
+				</p:column>
+				
+				<p:column headerText="UF" sortBy="#{itens.uf.sigla}">
+					<h:outputLabel value="#{itens.uf.sigla}" />
+				</p:column>
+				
+				<p:column headerText="Ações">
+					<p:commandButton value="Editar" update=":tbvCadastro:formCadastro">
+						<f:setPropertyActionListener value="#{municipioBean.municipio}" target="#{itens}" />
+					</p:commandButton>
+
+					<p:commandButton value="Excluir" action="#{municipioBean.delete()}" update="@form">
+						<f:setPropertyActionListener value="#{municipioBean.municipio}" target="#{itens}" />
+					</p:commandButton>
+				</p:column>
+				
+			</p:dataTable>
+		</h:form>
 	
 	</ui:define>
 </ui:composition>

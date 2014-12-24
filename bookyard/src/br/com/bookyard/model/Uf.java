@@ -18,12 +18,13 @@ public class Uf implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private long id;
+
 	private String descricao;
 	private String sigla;
 	
 	@OneToMany(mappedBy = "uf")
-	List<Municipio> municipios;
+	private List<Municipio> municipios;
 
 	public Long getId() {
 		return id;

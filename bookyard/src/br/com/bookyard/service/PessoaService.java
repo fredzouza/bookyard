@@ -14,7 +14,7 @@ public class PessoaService {
 	}
 	
 	public List<Pessoa> findAllPessoa(Pessoa pessoa){
-		return pessoaDao.readAll(pessoa);
+		return pessoaDao.findEntities(pessoa);
 	}
 	
 	public void updatePessoa(Pessoa pessoa){

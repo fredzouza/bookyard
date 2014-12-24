@@ -14,7 +14,7 @@ public class UfService {
 	}
 	
 	public List<Uf> findAllUf(Uf uf){
-		return ufDao.readAll(uf);
+		return ufDao.findEntities(uf);
 	}
 	
 	public void updateUf(Uf uf){

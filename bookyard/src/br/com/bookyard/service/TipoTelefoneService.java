@@ -14,7 +14,7 @@ public class TipoTelefoneService {
 	}
 	
 	public List<TipoTelefone> findAllTipoTelefone(TipoTelefone tipoTelefone){
-		return tipoTelefoneDao.readAll(tipoTelefone);
+		return tipoTelefoneDao.findEntities(tipoTelefone);
 	}
 	
 	public void updateTipoTelefone(TipoTelefone tipoTelefone){

@@ -14,7 +14,7 @@ public class EnderecoService {
 	}
 	
 	public List<Endereco> findAllEndereco(Endereco endereco){
-		return enderecoDao.readAll(endereco);
+		return enderecoDao.findEntities(endereco);
 	}
 	
 	public void updateEndereco(Endereco endereco){

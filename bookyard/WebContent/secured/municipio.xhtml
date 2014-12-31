@@ -33,10 +33,15 @@
 								itemLabel="#{itens.descricao}" itemValue="#{itens.id}" />
 						</p:selectOneMenu>
 					
+						<p:commandButton value="Salvar" action="#{municipioBean.salvar()}"
+							update="@form :formLista" />
+
+						<p:commandButton value="Cancelar" update="formCadastro" immediate="true" ajax="false" >
+		                    <p:resetInput target="formCadastro" />
+		                </p:commandButton>
+						
 					</p:panelGrid>
 					
-					<p:commandButton value="Salvar" action="#{municipioBean.salvar()}"
-						update="@form :formLista" />	
 				</h:form>
 			</p:tab>
 		</p:tabView>

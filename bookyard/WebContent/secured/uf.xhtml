@@ -12,28 +12,46 @@
 			<p:tab title="UF">
 				<h:form id="form" >
 					<p:growl id="msgs"/>
+					<h:inputHidden value="#{ufBean.uf.id}" />
 		
-					<p:panelGrid columns="2">
-		
-						<h:outputLabel value="" />
-						<h:inputHidden value="#{ufBean.uf.id}" />
+					<p:panelGrid>
 						
-						<h:outputLabel value="Descrição" />
-						<p:inputText value="#{ufBean.uf.descricao}"
-							onkeyup="this.value = this.value.toUpperCase()"
-							required="true" requiredMessage="Descrição obrigatória"/>
-		
-						<h:outputLabel value="Sigla" />
-						<p:inputText value="#{ufBean.uf.sigla}"
-							onkeyup="this.value = this.value.toUpperCase()"
-							required="true" requiredMessage="Sigla obrigatória"
-							maxlength="2"/>
-							
-						<p:commandButton value="Salvar" action="#{ufBean.salvar()}"
-							update="@form :formLista" />
+						<p:row>
+							<p:column>
+								<h:outputLabel value="Descrição" />
+							</p:column>
+	
+							<p:column>
+								<p:inputText value="#{ufBean.uf.descricao}"
+									onkeyup="this.value = this.value.toUpperCase()"
+									required="true" requiredMessage="Descrição obrigatória"/>
+							</p:column>
+						</p:row>
 
-						<p:commandButton value="Cancelar" actionListener="#{ufBean.limpa()}"
-							update="@form" immediate="true" />
+						<p:row>
+							<p:column>
+								<h:outputLabel value="Sigla" />
+							</p:column>
+	
+							<p:column>
+								<p:inputText value="#{ufBean.uf.sigla}"
+									onkeyup="this.value = this.value.toUpperCase()"
+									required="true" requiredMessage="Sigla obrigatória"
+									maxlength="2"/>
+							</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column style="text-align: center; width: 150px">
+								<p:commandButton value="Salvar" action="#{ufBean.salvar()}"
+									update="@form :formLista" />
+							</p:column>
+
+							<p:column style="text-align: center; width: 150px">
+								<p:commandButton value="Cancelar" ajax="false" type="reset" />
+							</p:column>
+						</p:row>
+
 					</p:panelGrid>
 				</h:form>
 			</p:tab>

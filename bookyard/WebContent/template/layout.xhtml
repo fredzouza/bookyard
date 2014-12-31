@@ -5,32 +5,33 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
  
-    <h:head>
-    </h:head>
- 
-    <h:body>
+<h:head>
+</h:head>
+
+<h:body>
  
 	<div id="page">
+    	<h:outputStylesheet library="css" name="layout.css"  />
  
 	    <div id="header">
 			<ui:insert name="header" >
-			  <ui:include src="/template/header.xhtml" />
+				<ui:include src="/template/header.xhtml" />
 			</ui:insert>
 	    </div>
  
 	    <div id="content">
 			<ui:insert name="content" >
-			  <ui:include src="/template/content.xhtml" />
+				<ui:include src="/template/content.xhtml" />
 			</ui:insert>
 	    </div>
  
 	    <div id="footer">
 			<ui:insert name="footer" >
-			  <ui:include src="/template/footer.xhtml" />
+				<ui:include src="/template/footer.xhtml" />
 			</ui:insert>
 	    </div>
  
 	</div>
  
-    </h:body>
+</h:body>
 </html>

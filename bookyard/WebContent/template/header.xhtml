@@ -6,38 +6,28 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
 <h:head>
-
-	<style type="text/css">
-	</style>
-
 </h:head> 
 
 <h:body> 
-
-<ui:composition>
-
-<h:form>
-	<p:growl id="messages" />
-
-	<p:menubar id="menubar" style="background-color: green" >
-		<p:submenu label="Cadastros" >
-			<p:submenu label="Livros" >
-				<p:menuitem value="Novo" url="#" />
-				<p:menuitem value="Listar" url="#" />
-			</p:submenu>
-
-			<p:menuitem value="UF" url="/secured/uf.jsf" />
-
-			<p:menuitem value="Municipio" url="/secured/municipio.jsf" />
-		</p:submenu>
-		
-		<f:facet name="options">
-			<p:commandButton type="buttom" value="Sair" action="#" />
-		</f:facet>
-	</p:menubar>
-</h:form>
+	<h:form>
+		<p:growl id="messages" />
 	
-</ui:composition>
-
+		<p:menubar id="menubar" style="background-color: green" >
+			<p:submenu label="Cadastros" >
+				<p:submenu label="Livros" >
+					<p:menuitem value="Novo" url="#" />
+					<p:menuitem value="Listar" url="#" />
+				</p:submenu>
+	
+				<p:menuitem value="UF" url="/secured/uf.jsf" />
+	
+				<p:menuitem value="Municipio" url="/secured/municipio.jsf" />
+			</p:submenu>
+			
+			<f:facet name="options">
+				<p:commandButton type="buttom" value="Sair" action="#" />
+			</f:facet>
+		</p:menubar>
+	</h:form>
 </h:body> 
 </html>
